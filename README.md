@@ -15,4 +15,3 @@ This repository hosts a simple web-based QR-code generator for URLs or WiFi cred
 
 ## License
 - The code in this repository is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-- The data in the `data/` directory is licensed under the [RESO EULA](https://www.reso.org/eula) - see the [data/LICENSE](data/LICENSE) file for details.
