@@ -1,3 +1,12 @@
+// Define an object to map QR code types to their corresponding div IDs.
+const qrTypeToDivMap = {
+    "URL": "urlDiv",
+    "WiFi": "wifiDiv",
+    "Geotag": "geotagDiv",
+    "vCard": "vCardDiv",
+    "vCalendar": "vCalendarDiv"
+};
+
 // Constants for DOM elements
 const qrTypeButtons = document.querySelectorAll("#qrTypeBtnGroup button");
 
@@ -17,15 +26,15 @@ qrTypeButtons.forEach(button => {
 
 // Initialize form elements based on selected QR code type
 function initializeForm(selectedType) {
-    const urlDiv = document.querySelector("#urlDiv");
-    const wifiDiv = document.querySelector("#wifiDiv");
-    
-    if (selectedType === "URL") {
-        urlDiv.style.display = "block";
-        wifiDiv.style.display = "none";
-    } else if (selectedType === "WiFi") {
-        urlDiv.style.display = "none";
-        wifiDiv.style.display = "block";
+    // Hide all sections
+    Object.values(qrTypeToDivMap).forEach((divId) => {
+        document.querySelector(`#${divId}`).style.display = "none";
+    });
+
+    // Show the section corresponding to the selected QR type
+    const selectedDivId = qrTypeToDivMap[selectedType];
+    if (selectedDivId) {
+        document.querySelector(`#${selectedDivId}`).style.display = "block";
     }
 }
 
@@ -35,6 +44,7 @@ function generateQRCode() {
     const type = selectedTypeButton.getAttribute('data-qrtype');
     
     let data = "";
+    
     if (type === "URL") {
         data = document.querySelector('#url').value;
     } else if (type === "WiFi") {
@@ -42,6 +52,34 @@ function generateQRCode() {
         const password = document.querySelector('#password').value;
         const networkType = document.querySelector('#networkType').value;
         data = `WIFI:T:${networkType};S:${ssid};P:${password};;`;
+    } else if (type === "Geotag") {
+        const latitude = document.querySelector('#latitude').value;
+        const longitude = document.querySelector('#longitude').value;
+        data = `geo:${latitude},${longitude}`;
+    } else if (type === "vCard") {
+        const firstName = document.querySelector('#firstName').value;
+        const lastName = document.querySelector('#lastName').value;
+        const email = document.querySelector('#email').value;
+        const phone = document.querySelector('#phone').value;
+        const website = document.querySelector('#website').value;
+        const company = document.querySelector('#company').value;
+        const title = document.querySelector('#jobTitle').value;
+        const street = document.querySelector('#street').value;
+        const city = document.querySelector('#city').value;
+        const state = document.querySelector('#state').value;
+        const zip = document.querySelector('#zip').value;
+        const country = document.querySelector('#country').value;
+        data = `BEGIN:VCARD` + `\n` + `VERSION:3.0` + `\n` + `N:${lastName};${firstName};;` + `\n` + `FN:${firstName} ${lastName}` + `\n` + `EMAIL:${email}` + `\n` + `TEL:${phone}` + `\n` + `URL:${website}` + `\n` + `ORG:${company}` + `\n` + `TITLE:${title}` + `\n` + `ADR;TYPE=work:;;${street};${city};${state};${zip};${country}` + `\n` + `END:VCARD`;
+    } else if (type === "vCalendar") {
+        const eventName = document.querySelector('#eventName').value;
+        const startDate = document.querySelector('#startDate').value;
+        const endDate = document.querySelector('#endDate').value;
+        const startTime = document.querySelector('#startTime').value;
+        const endTime = document.querySelector('#endTime').value;
+        const description = document.querySelector('#description').value;
+        const location = document.querySelector('#location').value;
+        const organizer = document.querySelector('#organizer').value;
+        data = `BEGIN:VCALENDAR` + `\n` + `VERSION:2.0` + `\n` + `BEGIN:VEVENT` + `\n` + `SUMMARY:${eventName}` + `\n` + `DTSTART:${startDate}T${startTime}Z` + `\n` + `DTEND:${endDate}T${endTime}Z` + `\n` + `DESCRIPTION:${description}` + `\n` + `LOCATION:${location}` + `\n` + `ORGANIZER:${organizer}` + `\n` + `END:VEVENT` + `\n` + `END:VCALENDAR`;
     }
 
     $('#qrcode').empty();
