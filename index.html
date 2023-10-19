@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>QR Code Generator</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" referrerpolicy="no-referrer" />
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery.qrcode@1.0.3/jquery.qrcode.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./"><span aria-hidden="true" class="fas fa-qrcode"></span>
+          <span aria-hidden="true" class="fas fa-cog"></span> QR Codes</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"  aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/RAHB-REALTORS-Association/qrcodes" target="_blank" rel="noopener noreferrer">
+                <span aria-hidden="true" class="fab fa-github"></span> GitHub
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="container bg-light p-5 my-3 rounded text-center">
+        <h1><i class="fas fa-qrcode"></i><i class="fas fa-cog"></i></h1>
+        <p class="lead">
+          A simple QR code generator supporting URLs and WiFi credentials.
+        </p>
+      </div>
+      <form class="mt-4" id="qrForm">      
+        <div id="urlDiv" class="mb-3">
+          <input class="form-control btn-lg" id="url" name="url" type="text" placeholder="Enter URL" />
+        </div>
+        <div id="wifiDiv" style="display: none">
+          <div class="mb-3">
+            <input class="form-control btn-lg" id="ssid" name="ssid" type="text" placeholder="SSID" />
+          </div>
+          <div class="mb-3">
+            <input class="form-control btn-lg" id="password" name="password" type="text" placeholder="Password" />
+          </div>
+          <div class="mb-3">
+            <select class="form-select btn-lg" id="networkType" name="networkType">
+              <option value="WPA">WPA/WPA2</option>
+              <option value="WEP">WEP</option>
+            </select>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <div class="btn-group" role="group" id="qrTypeBtnGroup">
+            <button type="button" class="btn btn-primary btn-lg" data-qrtype="URL">URL</button>
+            <button type="button" class="btn btn-secondary btn-lg" data-qrtype="WiFi">WiFi</button>
+          </div>
+          <button class="btn btn-primary btn-lg" onclick="generateQRCode()" type="button">
+            Generate <i class="fas fa-qrcode"></i>
+          </button>
+        </div>        
+      </form>
+      <div id="qrcode" class="mt-5 d-flex justify-content-center"></div>
+    </div>
+    <script src="static/generator.js"></script>
+  </body>
+</html>
