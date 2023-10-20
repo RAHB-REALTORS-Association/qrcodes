@@ -1,6 +1,8 @@
 // Define an object to map QR code types to their corresponding div IDs.
 const qrTypeToDivMap = {
     "URL": "urlDiv",
+    "Email": "emailDiv",
+    "SMS": "smsDiv",
     "WiFi": "wifiDiv",
     "Geotag": "geotagDiv",
     "vCard": "vCardDiv",
@@ -47,6 +49,15 @@ function generateQRCode() {
     
     if (type === "URL") {
         data = document.querySelector('#url').value;
+    } else if (type === "Email") {
+        const emailTo = document.querySelector('#emailTo').value;
+        const emailSubject = document.querySelector('#emailSubject').value;
+        const emailBody = document.querySelector('#emailBody').value;
+        data = `mailto:${emailTo}?subject=${emailSubject}&body=${emailBody}`;
+    } else if (type === "SMS") {
+        const smsNumber = document.querySelector('#smsNumber').value;
+        const smsMessage = document.querySelector('#smsMessage').value;
+        data = `SMS:${smsNumber}:${smsMessage}`;
     } else if (type === "WiFi") {
         const ssid = document.querySelector('#ssid').value;
         const password = document.querySelector('#password').value;
