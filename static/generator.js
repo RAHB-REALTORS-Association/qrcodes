@@ -2,7 +2,7 @@
 const qrTypeToDivMap = {
     "URL": "urlDiv",
     "Email": "emailDiv",
-    "Text": "smsDiv",
+    "SMS": "smsDiv",
     "WiFi": "wifiDiv",
     "Geotag": "geotagDiv",
     "vCard": "vCardDiv",
@@ -54,7 +54,7 @@ function generateQRCode() {
         const emailSubject = document.querySelector('#emailSubject').value;
         const emailBody = document.querySelector('#emailBody').value;
         data = `mailto:${emailTo}?subject=${emailSubject}&body=${emailBody}`;
-    } else if (type === "Text") {
+    } else if (type === "SMS") {
         const smsNumber = document.querySelector('#smsNumber').value;
         const smsMessage = document.querySelector('#smsMessage').value;
         data = `SMS:${smsNumber}:${smsMessage}`;
