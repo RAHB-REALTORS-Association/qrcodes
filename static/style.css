@@ -1,0 +1,11 @@
+@media (max-width: 767px) {
+    .btn-generate {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  @media (min-width: 768px) {
+    .btn-generate {
+      justify-content: flex-end;
+    }
+  }
