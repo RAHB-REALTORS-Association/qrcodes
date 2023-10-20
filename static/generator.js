@@ -83,9 +83,24 @@ function generateQRCode() {
     }
 
     $('#qrcode').empty();
-    $('#qrcode').qrcode({
+    const qrCodeCanvas = $('#qrcode').qrcode({
         text: data
-    });
+    })[0].firstChild;
+
+    // Convert the canvas to a PNG data URL
+    const imageData = qrCodeCanvas.toDataURL("image/png");
+
+    // Create a unique filename based on the timestamp
+    const filename = `QRCode_${new Date().toISOString().replace(/[-:.]/g, "")}.png`;
+
+    // Create an anchor element and set its attributes
+    const anchor = document.createElement("a");
+    anchor.href = imageData;
+    anchor.download = filename;
+    anchor.innerHTML = "<img src='" + imageData + "' alt='QR Code'/>";
+    
+    // Clear the QR code container and append the clickable anchor
+    $('#qrcode').empty().append(anchor);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
