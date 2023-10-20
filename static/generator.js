@@ -1,3 +1,6 @@
+// Global variable to store the uploaded image data
+let uploadedImage = null;
+
 // Define an object to map QR code types to their corresponding div IDs.
 const qrTypeToDivMap = {
     "URL": "urlDiv",
@@ -8,7 +11,20 @@ const qrTypeToDivMap = {
 };
 
 // Constants for DOM elements
+const sizeButtons = document.querySelectorAll("#sizeBtnGroup button");
 const qrTypeButtons = document.querySelectorAll("#qrTypeBtnGroup button");
+
+// Function to handle size button behavior
+sizeButtons.forEach(button => {
+    button.addEventListener("click", function() {
+        button.parentElement.querySelectorAll("button").forEach(sibling => {
+            sibling.classList.remove("btn-primary");
+            sibling.classList.add("btn-secondary");
+        });
+        button.classList.remove("btn-secondary");
+        button.classList.add("btn-primary");
+    });
+});
 
 // Function to handle QR code type button behavior
 qrTypeButtons.forEach(button => {
@@ -83,29 +99,103 @@ function generateQRCode() {
         data = `BEGIN:VCALENDAR` + `\n` + `VERSION:2.0` + `\n` + `BEGIN:VEVENT` + `\n` + `SUMMARY:${eventName}` + `\n` + `DTSTART:${startDate}T${startTime}Z` + `\n` + `DTEND:${endDate}T${endTime}Z` + `\n` + `ORGANIZER:${organizer}` + `\n` +`LOCATION:${location}` + `\n` +`URL:${eventUrl}` + `\n` +  `DESCRIPTION:${description}` + `\n` + `END:VEVENT` + `\n` + `END:VCALENDAR`;
     }
 
-    $('#qrcode').empty();
+    // Get the selected size
+    const selectedSizeButton = document.querySelector("#sizeBtnGroup .btn-primary");
+    const size = selectedSizeButton ? selectedSizeButton.getAttribute('data-size') : 256;
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Draw QR code on canvas
     const qrCodeCanvas = $('#qrcode').qrcode({
-        text: data
-    })[0].firstChild;
-
-    // Convert the canvas to a PNG data URL
-    const imageData = qrCodeCanvas.toDataURL("image/png");
-
-    // Create a unique filename based on the timestamp
-    const filename = `QRCode_${new Date().toISOString().replace(/[-:.]/g, "")}.png`;
-
-    // Create an anchor element and set its attributes
-    const anchor = document.createElement("a");
-    anchor.href = imageData;
-    anchor.download = filename;
-    anchor.innerHTML = "<img src='" + imageData + "' alt='QR Code'/>";
+        text: data,
+        render: 'canvas'
+    })[0];
     
-    // Clear the QR code container and append the clickable anchor
-    $('#qrcode').empty().append(anchor);
+    const qrCodeSize = 256; // or any other size you specify
+    canvas.width = qrCodeSize;
+    canvas.height = qrCodeSize;
+    ctx.drawImage(qrCodeCanvas, 0, 0, qrCodeSize, qrCodeSize);
+
+    // Create a new image object
+    const logoImage = new Image();
+
+    // Load the image
+    logoImage.src = logoDataURL;
+
+    // Wait for the image to load
+    logoImage.onload = function() {
+        // Draw the logo on top of the QR code
+        ctx.drawImage(logoImage, offset, offset, logoSize, logoSize);
+
+        // Convert the final canvas to a PNG data URL
+        const finalImageData = finalCanvas.toDataURL("image/png");
+
+        // Create a unique filename based on the timestamp
+        const filename = `QRCode_${new Date().toISOString().replace(/[-:.]/g, "")}.png`;
+
+        // Create an anchor element and set its attributes
+        const anchor = document.createElement("a");
+        anchor.href = finalImageData;
+        anchor.download = filename;
+        anchor.innerHTML = "<img src='" + finalImageData + "' alt='QR Code'/>";
+
+        // Clear the QR code container and append the clickable anchor
+        $('#qrcode').empty().append(anchor);
+    }
+
+    // Draw the uploaded logo
+    if (uploadedImage) {
+        const img = new Image();
+        img.src = uploadedImage;
+        img.onload = function() {
+            const logoSize = qrCodeSize * 0.2; // Adjust size as needed
+            const x = (qrCodeSize - logoSize) / 2;
+            const y = (qrCodeSize - logoSize) / 2;
+            ctx.drawImage(img, x, y, logoSize, logoSize);
+            
+            // Final QR code with logo
+            const finalImageData = canvas.toDataURL("image/png");
+
+            // Create an anchor element and set its attributes
+            const anchor = document.createElement("a");
+            anchor.href = finalImageData;
+            anchor.download = `QRCode_${new Date().toISOString().replace(/[-:.]/g, "")}.png`;
+            anchor.innerHTML = `<img src="${finalImageData}" alt="QR Code"/>`;
+
+            // Clear the QR code container and append the clickable anchor
+            $('#qrcode').empty().append(anchor);
+        };
+    } else {
+        // If no logo, proceed as usual
+        const imageData = canvas.toDataURL("image/png");
+        
+        // Create an anchor element and set its attributes
+        const anchor = document.createElement("a");
+        anchor.href = imageData;
+        anchor.download = `QRCode_${new Date().toISOString().replace(/[-:.]/g, "")}.png`;
+        anchor.innerHTML = `<img src="${imageData}" alt="QR Code"/>`;
+
+        // Clear the QR code container and append the clickable anchor
+        $('#qrcode').empty().append(anchor);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
     // Initialize the form with the first button as the default selected type
     const defaultSelectedType = document.querySelector("#qrTypeBtnGroup .btn-primary").getAttribute('data-qrtype');
     initializeForm(defaultSelectedType);
+
+    document.querySelector("#customLogo").addEventListener("change", function() {
+        const file = this.files[0];
+        if (file && file.type.match("image.*")) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e) {
+                uploadedImage = e.target.result;
+            };
+        } else {
+            alert("Invalid image file.");
+        }
+    });    
 });
