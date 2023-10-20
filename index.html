@@ -35,22 +35,19 @@
       <div class="container bg-light p-5 my-3 rounded text-center">
         <h1><i class="fas fa-qrcode"></i><i class="fas fa-cog"></i></h1>
         <p class="lead">
-          A simple QR code generator supporting URLs and WiFi credentials.
+          A simple QR code generator supporting URLs, WiFi credentials, Geotags, vCards and vCal codes.
         </p>
       </div>
       <form class="mt-4" id="qrForm">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex justify-content-center mb-3">
           <div class="btn-group" role="group" id="qrTypeBtnGroup">
-            <button type="button" class="btn btn-primary btn-lg" data-qrtype="URL">URL</button>
-            <button type="button" class="btn btn-secondary btn-lg" data-qrtype="WiFi">WiFi</button>
-            <button type="button" class="btn btn-secondary btn-lg" data-qrtype="Geotag">Geotag</button>
-            <button type="button" class="btn btn-secondary btn-lg" data-qrtype="vCard">vCard</button>
-            <button type="button" class="btn btn-secondary btn-lg" data-qrtype="vCalendar">vCalendar</button>
+            <button type="button" class="btn btn-primary" data-qrtype="URL"><i class="fas fa-globe"></i> URL</button>
+            <button type="button" class="btn btn-secondary" data-qrtype="WiFi"><i class="fas fa-wifi"></i> WiFi</button>
+            <button type="button" class="btn btn-secondary" data-qrtype="Geotag"><i class="fas fa-map-marker-alt"></i> Geo</button>
+            <button type="button" class="btn btn-secondary" data-qrtype="vCard"><i class="fas fa-address-card"></i> vCard</button>
+            <button type="button" class="btn btn-secondary" data-qrtype="vCalendar"><i class="fas fa-calendar-alt"></i> vCal</button>            
           </div>
-          <button class="btn btn-primary btn-lg" onclick="generateQRCode()" type="button">
-            Generate <i class="fas fa-qrcode"></i>
-          </button>
-        </div>  
+        </div>
         <div id="urlDiv" class="mb-3">
           <input class="form-control btn-lg" id="url" name="url" type="text" placeholder="Enter URL" />
         </div>
@@ -95,16 +92,16 @@
           </div>
           <div class="row">
               <div class="col-md-6 mb-3">
-                  <input class="form-control btn-lg" id="website" name="website" type="text" placeholder="Website" />
+                  <input class="form-control btn-lg" id="company" name="company" type="text" placeholder="Company" />
               </div>
               <div class="col-md-6 mb-3">
-                  <input class="form-control btn-lg" id="company" name="company" type="text" placeholder="Company" />
+                  <input class="form-control btn-lg" id="jobTitle" name="jobTitle" type="text" placeholder="Job Title" />
               </div>
           </div>
           <div class="row">
-              <div class="col-md-12 mb-3">
-                  <input class="form-control btn-lg" id="jobTitle" name="jobTitle" type="text" placeholder="Job Title" />
-              </div>
+            <div class="col-md-12 mb-3">
+                <input class="form-control btn-lg" id="website" name="website" type="text" placeholder="Website" />
+            </div>
           </div>
           <div class="row">
               <div class="col-md-12 mb-3">
@@ -112,19 +109,19 @@
               </div>
           </div>
           <div class="row">
-              <div class="col-md-4 mb-3">
+              <div class="col-md-6 mb-3">
                   <input class="form-control btn-lg" id="city" name="city" type="text" placeholder="City" />
               </div>
-              <div class="col-md-4 mb-3">
+              <div class="col-md-6 mb-3">
                   <input class="form-control btn-lg" id="state" name="state" type="text" placeholder="State" />
-              </div>
-              <div class="col-md-4 mb-3">
-                  <input class="form-control btn-lg" id="zip" name="zip" type="text" placeholder="Zip" />
               </div>
           </div>
           <div class="row">
-              <div class="col-md-12 mb-3">
-                  <input class="form-control btn-lg" id="country" name="country" type="text" placeholder="Country" />
+              <div class="col-md-6 mb-3">
+                  <input class="form-control btn-lg" id="zip" name="zip" type="text" placeholder="Zip" />
+              </div>
+              <div class="col-md-6 mb-3">
+                <input class="form-control btn-lg" id="country" name="country" type="text" placeholder="Country" />
               </div>
           </div>
         </div>
@@ -152,12 +149,20 @@
               <input class="form-control btn-lg" id="location" name="location" type="text" placeholder="Location" />
           </div>
           <div class="mb-3">
+              <input class="form-control btn-lg" id="organizer" name="organizer" type="text" placeholder="Organizer" />
+          </div>
+          <div class="mb-3">
               <input class="form-control btn-lg" id="description" name="description" type="text" placeholder="Description" />
           </div>
         </div>
+        <div class="d-flex">
+          <button class="btn btn-primary btn-lg ms-auto" onclick="generateQRCode()" type="button">
+            Generate <i class="fas fa-qrcode"></i>
+          </button>
+        </div>                        
       </form>
       <div id="qrcode" class="my-5 d-flex justify-content-center"></div>
     </div>
-    <script src="static/generator.js?v=202310191616"></script>
+    <script src="static/generator.js?v=202310192002"></script>
   </body>
 </html>

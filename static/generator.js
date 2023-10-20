@@ -76,10 +76,10 @@ function generateQRCode() {
         const endDate = document.querySelector('#endDate').value;
         const startTime = document.querySelector('#startTime').value;
         const endTime = document.querySelector('#endTime').value;
-        const description = document.querySelector('#description').value;
         const location = document.querySelector('#location').value;
         const organizer = document.querySelector('#organizer').value;
-        data = `BEGIN:VCALENDAR` + `\n` + `VERSION:2.0` + `\n` + `BEGIN:VEVENT` + `\n` + `SUMMARY:${eventName}` + `\n` + `DTSTART:${startDate}T${startTime}Z` + `\n` + `DTEND:${endDate}T${endTime}Z` + `\n` + `DESCRIPTION:${description}` + `\n` + `LOCATION:${location}` + `\n` + `ORGANIZER:${organizer}` + `\n` + `END:VEVENT` + `\n` + `END:VCALENDAR`;
+        const description = document.querySelector('#description').value;
+        data = `BEGIN:VCALENDAR` + `\n` + `VERSION:2.0` + `\n` + `BEGIN:VEVENT` + `\n` + `SUMMARY:${eventName}` + `\n` + `DTSTART:${startDate}T${startTime}Z` + `\n` + `DTEND:${endDate}T${endTime}Z` + `\n` + `LOCATION:${location}` + `\n` + `ORGANIZER:${organizer}` + `\n` + `DESCRIPTION:${description}` + `\n` + `END:VEVENT` + `\n` + `END:VCALENDAR`;
     }
 
     $('#qrcode').empty();
