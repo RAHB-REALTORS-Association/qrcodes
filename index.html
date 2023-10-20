@@ -13,162 +13,186 @@
         <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery.qrcode@1.0.3/jquery.qrcode.min.js"></script>
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="./"><span aria-hidden="true" class="fas fa-qrcode"></span>
-                  <span aria-hidden="true" class="fas fa-cogs"></span> QR Codes</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"  aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-                  <ul class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                          <a class="nav-link" href="https://github.com/RAHB-REALTORS-Association/qrcodes" target="_blank" rel="noopener noreferrer">
-                              <span aria-hidden="true" class="fab fa-github"></span> GitHub
-                          </a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
-      <div class="container">
-          <div class="container bg-light p-5 my-3 rounded text-center">
-              <h1><i class="fas fa-qrcode"></i> <i class="fas fa-cogs"></i></h1>
-              <p class="lead">
-                  A simple QR code generator supporting URLs, WiFi credentials, Geotags, vCards and vCal codes.
-              </p>
-          </div>
-          <form class="mt-4" id="qrForm">
-              <div class="d-flex justify-content-center mb-3">
-                  <div class="btn-group" role="group" id="qrTypeBtnGroup">
-                      <button type="button" class="btn btn-primary" data-qrtype="URL"><i class="fas fa-globe"></i> URL</button>
-                      <button type="button" class="btn btn-secondary" data-qrtype="WiFi"><i class="fas fa-wifi"></i> WiFi</button>
-                      <button type="button" class="btn btn-secondary" data-qrtype="Geotag"><i class="fas fa-map-marker-alt"></i> Geo</button>
-                      <button type="button" class="btn btn-secondary" data-qrtype="vCard"><i class="fas fa-address-card"></i> vCard</button>
-                      <button type="button" class="btn btn-secondary" data-qrtype="vCalendar"><i class="fas fa-calendar-alt"></i> vCal</button>
-                  </div>
-              </div>
-              <div id="urlDiv" class="mb-3">
-                  <input class="form-control btn-lg" id="url" name="url" type="text" placeholder="Enter URL" />
-              </div>
-              <div id="wifiDiv" style="display: none">
-                  <div class="mb-3">
-                      <input class="form-control btn-lg" id="ssid" name="ssid" type="text" placeholder="SSID" />
-                  </div>
-                  <div class="mb-3">
-                      <input class="form-control btn-lg" id="password" name="password" type="text" placeholder="Password" />
-                  </div>
-                  <div class="mb-3">
-                      <select class="form-select btn-lg" id="networkType" name="networkType">
-                          <option value="WPA">WPA/WPA2</option>
-                          <option value="WEP">WEP</option>
-                      </select>
-                  </div>
-              </div>
-              <div id="geotagDiv" style="display: none;">
-                  <div class="mb-3">
-                      <input class="form-control btn-lg" id="latitude" name="latitude" type="text" placeholder="Latitude" />
-                  </div>
-                  <div class="mb-3">
-                      <input class="form-control btn-lg" id="longitude" name="longitude" type="text" placeholder="Longitude" />
-                  </div>
-              </div>
-              <div id="vCardDiv" style="display: none;">
-                  <div class="row">
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="firstName" name="firstName" type="text" placeholder="First Name" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="lastName" name="lastName" type="text" placeholder="Last Name" />
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="email" name="email" type="text" placeholder="Email" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="phone" name="phone" type="text" placeholder="Phone" />
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="company" name="company" type="text" placeholder="Company" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="jobTitle" name="jobTitle" type="text" placeholder="Job Title" />
-                      </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <input class="form-control" id="website" name="website" type="text" placeholder="Website" />
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./"><span aria-hidden="true" class="fas fa-qrcode"></span>
+                    <span aria-hidden="true" class="fas fa-cogs"></span> QR Codes</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"  aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/RAHB-REALTORS-Association/qrcodes" target="_blank" rel="noopener noreferrer">
+                                <span aria-hidden="true" class="fab fa-github"></span> GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="container bg-light p-5 my-3 rounded text-center">
+                <h1><i class="fas fa-qrcode"></i> <i class="fas fa-cogs"></i></h1>
+                <p class="lead">
+                    A simple QR code generator supporting URLs, WiFi credentials, Geotags, vCards and vCal codes.
+                </p>
+            </div>
+            <form class="mt-4" id="qrForm">
+                <div class="d-flex flex-wrap justify-content-center mb-3" id="qrTypeBtnGroup">
+                    <button type="button" class="btn btn-primary me-2 mb-2" data-qrtype="URL"><i class="fas fa-globe"></i> URL</button>
+                    <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="Email"><i class="fas fa-envelope"></i> Email</button>
+                    <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="Text"><i class="fas fa-mobile"></i> Text</button>
+                    <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="WiFi"><i class="fas fa-wifi"></i> WiFi</button>
+                    <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="Geotag"><i class="fas fa-map-marker-alt"></i> Geo</button>
+                    <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="vCard"><i class="fas fa-address-card"></i> vCard</button>
+                    <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="vCalendar"><i class="fas fa-calendar-alt"></i> vCal</button>
+                </div>
+                <div id="urlDiv" class="mb-3">
+                    <input class="form-control btn-lg" id="url" name="url" type="text" placeholder="Enter URL" />
+                </div>
+                <div id="emailDiv" style="display: none">
+                    <div class="mb-3">
+                        <input class="form-control btn-lg" id="emailTo" name="emailTo" type="text" placeholder="To: Address" />
                     </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12 mb-3">
-                          <input class="form-control" id="street" name="street" type="text" placeholder="Street" />
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="city" name="city" type="text" placeholder="City" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="state" name="state" type="text" placeholder="State" />
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="zip" name="zip" type="text" placeholder="Zip" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <input class="form-control" id="country" name="country" type="text" placeholder="Country" />
-                      </div>
-                  </div>
-              </div>
-              <div id="vCalendarDiv" style="display: none;">
-                  <div class="mb-2">
-                      <input class="form-control" id="eventName" name="eventName" type="text" placeholder="Event Name" />
-                  </div>
-                  <div class="row">
-                      <label class="col-md-12 mb-1 ms-1" for="eventColor">Start:</label>
-                      <div class="col-md-6 mb-2">
-                          <input class="form-control" id="startDate" name="startDate" type="date" placeholder="Start Date" />
-                      </div>
-                      <div class="col-md-6 mb-2">
-                          <input class="form-control" id="startTime" name="startTime" type="time" placeholder="Start Time" />
-                      </div>
-                  </div>
-                  <div class="row">
-                      <label class="col-md-12 mb-1 ms-1" for="eventColor">End:</label>
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="endDate" name="endDate" type="date" placeholder="End Date" />
-                      </div>
-                      <div class="col-md-6 mb-3">
-                          <input class="form-control" id="endTime" name="endTime" type="time" placeholder="End Time" />
-                      </div>
-                  </div>
-                  <div class="mb-3">
-                      <input class="form-control" id="organizer" name="organizer" type="text" placeholder="Organizer" />
-                  </div>
-                  <div class="mb-3">
-                    <input class="form-control" id="location" name="location" type="text" placeholder="Location" />
-                  </div>
-                  <div class="mb-3">
-                    <input class="form-control" id="eventUrl" name="eventUrl" type="text" placeholder="URL" />
-                  </div>
-                  <div class="mb-3">
-                      <input class="form-control" id="description" name="description" type="text" placeholder="Description" />
-                  </div>
-              </div>
-              <div class="d-flex">
-                  <button class="btn btn-primary btn-lg ms-auto btn-generate" onclick="generateQRCode()" type="button">
-                    Generate QR <i class="fas fa-qrcode"></i>
-                  </button>
-              </div>
-          </form>
-          <div id="qrcode" class="my-5 d-flex justify-content-center"></div>
-      </div>
-      <script src="static/generator.js?v=202310192240"></script>
+                    <div class="mb-3">
+                        <input class="form-control btn-lg" id="emailSubject" name="emailSubject" type="text" placeholder="Subject" />
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control btn-lg" id="emailBody" name="emailBody" placeholder="Body"></textarea>
+                    </div>
+                </div>
+                <div id="smsDiv" style="display: none">
+                    <div class="mb-3">
+                        <input class="form-control btn-lg" id="smsNumber" name="smsNumber" type="text" placeholder="Cell Number" />
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control btn-lg" id="smsMessage" name="smsMessage" placeholder="Message"></textarea>
+                    </div>
+                </div>
+                <div id="textDiv" style="display: none">
+                    <div class="mb-3">
+                        <textarea class="form-control btn-lg" id="text" name="text" placeholder="Text"></textarea>
+                    </div>
+                </div>
+                <div id="wifiDiv" style="display: none">
+                    <div class="mb-3">
+                        <input class="form-control btn-lg" id="ssid" name="ssid" type="text" placeholder="SSID" />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control btn-lg" id="password" name="password" type="text" placeholder="Password" />
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select btn-lg" id="networkType" name="networkType">
+                            <option value="WPA">WPA/WPA2</option>
+                            <option value="WEP">WEP</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="geotagDiv" style="display: none;">
+                    <div class="mb-3">
+                        <input class="form-control btn-lg" id="latitude" name="latitude" type="text" placeholder="Latitude" />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control btn-lg" id="longitude" name="longitude" type="text" placeholder="Longitude" />
+                    </div>
+                </div>
+                <div id="vCardDiv" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="firstName" name="firstName" type="text" placeholder="First Name" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="lastName" name="lastName" type="text" placeholder="Last Name" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="email" name="email" type="text" placeholder="Email" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="phone" name="phone" type="text" placeholder="Phone" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="company" name="company" type="text" placeholder="Company" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="jobTitle" name="jobTitle" type="text" placeholder="Job Title" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" id="website" name="website" type="text" placeholder="Website" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" id="street" name="street" type="text" placeholder="Street" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="city" name="city" type="text" placeholder="City" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="state" name="state" type="text" placeholder="State" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="zip" name="zip" type="text" placeholder="Zip" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="country" name="country" type="text" placeholder="Country" />
+                        </div>
+                    </div>
+                </div>
+                <div id="vCalendarDiv" style="display: none;">
+                    <div class="mb-2">
+                        <input class="form-control" id="eventName" name="eventName" type="text" placeholder="Event Name" />
+                    </div>
+                    <div class="row">
+                        <label class="col-md-12 mb-1 ms-1" for="eventColor">Start:</label>
+                        <div class="col-md-6 mb-2">
+                            <input class="form-control" id="startDate" name="startDate" type="date" placeholder="Start Date" />
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <input class="form-control" id="startTime" name="startTime" type="time" placeholder="Start Time" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-12 mb-1 ms-1" for="eventColor">End:</label>
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="endDate" name="endDate" type="date" placeholder="End Date" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="endTime" name="endTime" type="time" placeholder="End Time" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" id="organizer" name="organizer" type="text" placeholder="Organizer" />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" id="location" name="location" type="text" placeholder="Location" />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" id="eventUrl" name="eventUrl" type="text" placeholder="URL" />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" id="description" name="description" type="text" placeholder="Description" />
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <button class="btn btn-primary btn-lg ms-auto btn-generate" onclick="generateQRCode()" type="button">
+                        Generate QR <i class="fas fa-qrcode"></i>
+                    </button>
+                </div>
+            </form>
+            <div id="qrcode" class="my-5 d-flex justify-content-center"></div>
+        </div>
+        <script src="static/generator.js?v=202310190206"></script>
     </body>
 </html>
