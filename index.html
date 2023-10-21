@@ -115,11 +115,11 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" id="email" name="email" type="text" placeholder="Email" />
+                        <input class="form-control" id="email" name="email" type="text" placeholder="Email" autocomplete="email" />
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <input class="form-control" id="phone" name="phone" type="text" placeholder="Phone" />
+                            <input class="form-control" id="phone" name="phone" type="text" placeholder="Phone" autocomplete="tel" />
                         </div>
                         <div class="col-md-6 mb-3">
                             <input class="form-control" id="mobile" name="mobile" type="text" placeholder="Mobile" />
@@ -141,12 +141,12 @@
                             <input class="form-control" id="zip" name="zip" type="text" placeholder="Zip" />
                         </div>
                         <div class="col-md-6 mb-3">
-                            <input class="form-control" id="country" name="country" type="text" placeholder="Country" />
+                            <input class="form-control" id="country" name="country" type="text" placeholder="Country" autocomplete="country" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <input class="form-control" id="company" name="company" type="text" placeholder="Company" />
+                            <input class="form-control" id="company" name="company" type="text" placeholder="Company" autocomplete="organization" />
                         </div>
                         <div class="col-md-6 mb-3">
                             <input class="form-control" id="jobTitle" name="jobTitle" type="text" placeholder="Job Title" />
@@ -161,7 +161,7 @@
                         <input class="form-control" id="eventName" name="eventName" type="text" placeholder="Event Name" />
                     </div>
                     <div class="row">
-                        <label class="col-md-12 mb-1 ms-1" for="eventColor">Start:</label>
+                        <label class="col-md-12 mb-1 ms-1" for="startDate">Start:</label>
                         <div class="col-md-6 mb-2">
                             <input class="form-control" id="startDate" name="startDate" type="date" placeholder="Start Date" />
                         </div>
@@ -170,7 +170,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-12 mb-1 ms-1" for="eventColor">End:</label>
+                        <label class="col-md-12 mb-1 ms-1" for="endDate">End:</label>
                         <div class="col-md-6 mb-3">
                             <input class="form-control" id="endDate" name="endDate" type="date" placeholder="End Date" />
                         </div>
@@ -202,6 +202,6 @@
             </form>
             <div id="qrcode" class="my-5 d-flex justify-content-center"></div>
         </div>
-        <script src="static/generator.js?v=202310211146"></script>
+        <script src="static/generator.js?v=202310211552"></script>
     </body>
 </html>
