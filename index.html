@@ -7,7 +7,7 @@
         <title>QR Code Generator</title>
         <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" referrerpolicy="no-referrer" />
-        <link href="static/style.css?v=202310192247" rel="stylesheet" />
+        <link href="static/style.css?v=202310210330" rel="stylesheet" />
         <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
         <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery.qrcode@1.0.3/jquery.qrcode.min.js"></script>
@@ -39,19 +39,22 @@
                     A simple QR code generator supporting URL, Email, SMS, WiFi, Geotag, vCard and vCal.
                 </p>
             </div>
-            <form class="mt-4" id="qrForm">
+            <form class="mt-2" id="qrForm">
                 <div class="d-flex flex-wrap justify-content-center mb-3" id="qrTypeBtnGroup">
-                    <button type="button" class="btn btn-primary me-1 mb-2 ms-1" data-qrtype="URL"><i class="fas fa-globe"></i> URL</button>
-                    <button type="button" class="btn btn-secondary me-1 mb-2 ms-1" data-qrtype="Email"><i class="fas fa-envelope"></i> Email</button>
-                    <button type="button" class="btn btn-secondary me-1 mb-2 ms-1" data-qrtype="SMS"><i class="fas fa-mobile"></i> SMS</button>
-                    <button type="button" class="btn btn-secondary me-1 mb-2 ms-1" data-qrtype="WiFi"><i class="fas fa-wifi"></i> WiFi</button>
-                    <button type="button" class="btn btn-secondary me-1 mb-2 ms-1" data-qrtype="Geotag"><i class="fas fa-map-marker-alt"></i> Geo</button>
-                    <button type="button" class="btn btn-secondary me-1 mb-2 ms-1" data-qrtype="vCard"><i class="fas fa-address-card"></i> vCard</button>
-                    <button type="button" class="btn btn-secondary me-1 mb-2 ms-1" data-qrtype="vCalendar"><i class="fas fa-calendar-alt"></i> vCal</button>
-                    <button type="button" class="btn btn-secondary me-1 mb-2 ms-1" data-qrtype="Text"><i class="fas fa-font"></i> Text</button>
+                    <button type="button" class="btn btn-primary btn-lg m-2" data-qrtype="URL"><i class="fas fa-globe"></i> URL</button>
+                    <button type="button" class="btn btn-secondary btn-lg m-2" data-qrtype="Text"><i class="fas fa-font"></i> Text</button>
+                    <button type="button" class="btn btn-secondary btn-lg m-2" data-qrtype="Email"><i class="fas fa-envelope"></i> Email</button>
+                    <button type="button" class="btn btn-secondary btn-lg m-2" data-qrtype="SMS"><i class="fas fa-mobile"></i> SMS</button>
+                    <button type="button" class="btn btn-secondary btn-lg m-2" data-qrtype="WiFi"><i class="fas fa-wifi"></i> WiFi</button>
+                    <button type="button" class="btn btn-secondary btn-lg m-2" data-qrtype="Geotag"><i class="fas fa-map-marker-alt"></i> Geo</button>
+                    <button type="button" class="btn btn-secondary btn-lg m-2" data-qrtype="vCard"><i class="fas fa-address-card"></i> vCard</button>
+                    <button type="button" class="btn btn-secondary btn-lg m-2" data-qrtype="vCalendar"><i class="fas fa-calendar-alt"></i> vCal</button>
                 </div>
                 <div id="urlDiv" class="mb-3">
                     <input class="form-control btn-lg" id="url" name="url" type="text" placeholder="Enter URL" />
+                </div>
+                <div id="textDiv" style="display: none">
+                    <textarea class="form-control btn-lg mb-3" id="plainText" name="plainText" placeholder="Text"></textarea>
                 </div>
                 <div id="emailDiv" style="display: none">
                     <div class="mb-3">
@@ -189,9 +192,6 @@
                         <input class="form-control" id="description" name="description" type="text" placeholder="Description" />
                     </div>
                 </div>
-                <div id="textDiv" style="display: none">
-                    <textarea class="form-control btn-lg mb-3" id="plainText" name="plainText" placeholder="Text"></textarea>
-                </div>
                 <div class="d-flex">
                     <button class="btn btn-primary btn-lg ms-auto btn-generate" onclick="generateQRCode()" type="button">
                         Generate QR <i class="fas fa-qrcode"></i>
@@ -200,6 +200,6 @@
             </form>
             <div id="qrcode" class="my-5 d-flex justify-content-center"></div>
         </div>
-        <script src="static/generator.js?v=202310210118"></script>
+        <script src="static/generator.js?v=202310210332"></script>
     </body>
 </html>

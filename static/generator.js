@@ -1,13 +1,13 @@
 // Define an object to map QR code types to their corresponding div IDs.
 const qrTypeToDivMap = {
     "URL": "urlDiv",
+    "Text": "textDiv",
     "Email": "emailDiv",
     "SMS": "smsDiv",
     "WiFi": "wifiDiv",
     "Geotag": "geotagDiv",
     "vCard": "vCardDiv",
-    "vCalendar": "vCalendarDiv",
-    "Text": "textDiv"
+    "vCalendar": "vCalendarDiv"
 };
 
 // Constants for DOM elements
@@ -50,6 +50,8 @@ function generateQRCode() {
     
     if (type === "URL") {
         data = document.querySelector('#url').value;
+    } else if (type === "Text") {
+        data = document.querySelector('#plainText').value;
     } else if (type === "Email") {
         const emailTo = document.querySelector('#emailTo').value;
         const emailSubject = document.querySelector('#emailSubject').value;
@@ -95,8 +97,6 @@ function generateQRCode() {
         const eventUrl = document.querySelector('#eventUrl').value;
         const description = document.querySelector('#description').value;
         data = `BEGIN:VCALENDAR` + `\n` + `VERSION:2.0` + `\n` + `BEGIN:VEVENT` + `\n` + `SUMMARY:${eventName}` + `\n` + `DTSTART:${startDate}T${startTime}Z` + `\n` + `DTEND:${endDate}T${endTime}Z` + `\n` + `TZID:${timezone}` + `\n` + `ORGANIZER:${organizer}` + `\n` +`LOCATION:${location}` + `\n` +`URL:${eventUrl}` + `\n` +  `DESCRIPTION:${description}` + `\n` + `END:VEVENT` + `\n` + `END:VCALENDAR`;
-    } else if (type === "Text") {
-        data = document.querySelector('#plainText').value;
     }
 
     console.log(`data for ${type}: ${data}`);
