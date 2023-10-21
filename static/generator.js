@@ -76,15 +76,15 @@ function generateQRCode() {
         const email = document.querySelector('#email').value;
         const phone = document.querySelector('#phone').value;
         const mobile = document.querySelector('#mobile').value;
-        const website = document.querySelector('#website').value;
-        const company = document.querySelector('#company').value;
-        const title = document.querySelector('#jobTitle').value;
         const street = document.querySelector('#street').value;
         const city = document.querySelector('#city').value;
         const state = document.querySelector('#state').value;
         const zip = document.querySelector('#zip').value;
         const country = document.querySelector('#country').value;
-        data = `BEGIN:VCARD` + `\n` + `VERSION:3.0` + `\n` + `N:${lastName};${firstName};;` + `\n` + `FN:${firstName} ${lastName}` + `\n` + `EMAIL:${email}` + `\n` + `TEL:${phone}` + `\n` + `TEL;TYPE=CELL:${mobile}` + `\n` + `URL:${website}` + `\n` + `ORG:${company}` + `\n` + `TITLE:${title}` + `\n` + `ADR;TYPE=work:;;${street};${city};${state};${zip};${country}` + `\n` + `END:VCARD`;
+        const website = document.querySelector('#website').value;
+        const company = document.querySelector('#company').value;
+        const title = document.querySelector('#jobTitle').value;
+        data = `BEGIN:VCARD` + `\n` + `VERSION:3.0` + `\n` + `N:${lastName};${firstName};;` + `\n` + `FN:${firstName} ${lastName}` + `\n` + `EMAIL:${email}` + `\n` + `TEL:${phone}` + `\n` + `TEL;TYPE=CELL:${mobile}` + `\n` + `ADR;TYPE=work:;;${street};${city};${state};${zip};${country}` + `\n` + `ORG:${company}` + `\n` + `TITLE:${title}` + `\n` + `URL:${website}` + `\n` + `END:VCARD`;
     } else if (type === "vCalendar") {
         const eventName = document.querySelector('#eventName').value;
         const startDate = document.querySelector('#startDate').value;
