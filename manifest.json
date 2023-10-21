@@ -2,7 +2,7 @@
     "name": "QR Code Generator",
     "short_name": "QR Codes",
     "description": "A simple QR code generator supporting URL, Email, SMS, WiFi, Geotag, vCard and vCal.",
-    "start_url": "/",
+    "start_url": "/qrcodes/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
