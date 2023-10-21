@@ -48,6 +48,7 @@
                     <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="Geotag"><i class="fas fa-map-marker-alt"></i> Geo</button>
                     <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="vCard"><i class="fas fa-address-card"></i> vCard</button>
                     <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="vCalendar"><i class="fas fa-calendar-alt"></i> vCal</button>
+                    <button type="button" class="btn btn-secondary me-2 mb-2" data-qrtype="Text"><i class="fas fa-font"></i> Text</button>
                 </div>
                 <div id="urlDiv" class="mb-3">
                     <input class="form-control btn-lg" id="url" name="url" type="text" placeholder="Enter URL" />
@@ -69,11 +70,6 @@
                     </div>
                     <div class="mb-3">
                         <textarea class="form-control btn-lg" id="smsMessage" name="smsMessage" placeholder="Message"></textarea>
-                    </div>
-                </div>
-                <div id="textDiv" style="display: none">
-                    <div class="mb-3">
-                        <textarea class="form-control btn-lg" id="text" name="text" placeholder="Text"></textarea>
                     </div>
                 </div>
                 <div id="wifiDiv" style="display: none">
@@ -108,11 +104,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-12 mb-3">
                             <input class="form-control" id="email" name="email" type="text" placeholder="Email" />
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <input class="form-control" id="phone" name="phone" type="text" placeholder="Phone" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input class="form-control" id="mobile" name="mobile" type="text" placeholder="Mobile" />
                         </div>
                     </div>
                     <div class="row">
@@ -173,6 +174,9 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <input class="form-control" id="timezone" name="timezone" type="text" placeholder="Timezone" />
+                    </div>
+                    <div class="mb-3">
                         <input class="form-control" id="organizer" name="organizer" type="text" placeholder="Organizer" />
                     </div>
                     <div class="mb-3">
@@ -185,6 +189,9 @@
                         <input class="form-control" id="description" name="description" type="text" placeholder="Description" />
                     </div>
                 </div>
+                <div id="textDiv" style="display: none">
+                    <textarea class="form-control btn-lg mb-3" id="plainText" name="plainText" placeholder="Text"></textarea>
+                </div>
                 <div class="d-flex">
                     <button class="btn btn-primary btn-lg ms-auto btn-generate" onclick="generateQRCode()" type="button">
                         Generate QR <i class="fas fa-qrcode"></i>
@@ -193,6 +200,6 @@
             </form>
             <div id="qrcode" class="my-5 d-flex justify-content-center"></div>
         </div>
-        <script src="static/generator.js?v=202310190213"></script>
+        <script src="static/generator.js?v=202310210118"></script>
     </body>
 </html>

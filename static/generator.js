@@ -6,7 +6,8 @@ const qrTypeToDivMap = {
     "WiFi": "wifiDiv",
     "Geotag": "geotagDiv",
     "vCard": "vCardDiv",
-    "vCalendar": "vCalendarDiv"
+    "vCalendar": "vCalendarDiv",
+    "Text": "textDiv"
 };
 
 // Constants for DOM elements
@@ -72,6 +73,7 @@ function generateQRCode() {
         const lastName = document.querySelector('#lastName').value;
         const email = document.querySelector('#email').value;
         const phone = document.querySelector('#phone').value;
+        const mobile = document.querySelector('#mobile').value;
         const website = document.querySelector('#website').value;
         const company = document.querySelector('#company').value;
         const title = document.querySelector('#jobTitle').value;
@@ -80,19 +82,24 @@ function generateQRCode() {
         const state = document.querySelector('#state').value;
         const zip = document.querySelector('#zip').value;
         const country = document.querySelector('#country').value;
-        data = `BEGIN:VCARD` + `\n` + `VERSION:3.0` + `\n` + `N:${lastName};${firstName};;` + `\n` + `FN:${firstName} ${lastName}` + `\n` + `EMAIL:${email}` + `\n` + `TEL:${phone}` + `\n` + `URL:${website}` + `\n` + `ORG:${company}` + `\n` + `TITLE:${title}` + `\n` + `ADR;TYPE=work:;;${street};${city};${state};${zip};${country}` + `\n` + `END:VCARD`;
+        data = `BEGIN:VCARD` + `\n` + `VERSION:3.0` + `\n` + `N:${lastName};${firstName};;` + `\n` + `FN:${firstName} ${lastName}` + `\n` + `EMAIL:${email}` + `\n` + `TEL:${phone}` + `\n` + `TEL;TYPE=CELL:${mobile}` + `\n` + `URL:${website}` + `\n` + `ORG:${company}` + `\n` + `TITLE:${title}` + `\n` + `ADR;TYPE=work:;;${street};${city};${state};${zip};${country}` + `\n` + `END:VCARD`;
     } else if (type === "vCalendar") {
         const eventName = document.querySelector('#eventName').value;
         const startDate = document.querySelector('#startDate').value;
         const endDate = document.querySelector('#endDate').value;
         const startTime = document.querySelector('#startTime').value;
         const endTime = document.querySelector('#endTime').value;
+        const timezone = document.querySelector('#timezone').value;
         const organizer = document.querySelector('#organizer').value;
         const location = document.querySelector('#location').value;
         const eventUrl = document.querySelector('#eventUrl').value;
         const description = document.querySelector('#description').value;
-        data = `BEGIN:VCALENDAR` + `\n` + `VERSION:2.0` + `\n` + `BEGIN:VEVENT` + `\n` + `SUMMARY:${eventName}` + `\n` + `DTSTART:${startDate}T${startTime}Z` + `\n` + `DTEND:${endDate}T${endTime}Z` + `\n` + `ORGANIZER:${organizer}` + `\n` +`LOCATION:${location}` + `\n` +`URL:${eventUrl}` + `\n` +  `DESCRIPTION:${description}` + `\n` + `END:VEVENT` + `\n` + `END:VCALENDAR`;
+        data = `BEGIN:VCALENDAR` + `\n` + `VERSION:2.0` + `\n` + `BEGIN:VEVENT` + `\n` + `SUMMARY:${eventName}` + `\n` + `DTSTART:${startDate}T${startTime}Z` + `\n` + `DTEND:${endDate}T${endTime}Z` + `\n` + `TZID:${timezone}` + `\n` + `ORGANIZER:${organizer}` + `\n` +`LOCATION:${location}` + `\n` +`URL:${eventUrl}` + `\n` +  `DESCRIPTION:${description}` + `\n` + `END:VEVENT` + `\n` + `END:VCALENDAR`;
+    } else if (type === "Text") {
+        data = document.querySelector('#plainText').value;
     }
+
+    console.log(`data for ${type}: ${data}`);
 
     $('#qrcode').empty();
     const qrCodeCanvas = $('#qrcode').qrcode({
