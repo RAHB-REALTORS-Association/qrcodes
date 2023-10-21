@@ -5,7 +5,7 @@
     "start_url": "/qrcodes/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#000000",
+    "theme_color": "#212529",
     "orientation": "portrait-primary",
     "icons": [
       {
