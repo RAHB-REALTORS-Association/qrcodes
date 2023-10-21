@@ -103,7 +103,9 @@ function generateQRCode() {
 
     $('#qrcode').empty();
     const qrCodeCanvas = $('#qrcode').qrcode({
-        text: data
+        text: data,
+        width: 1024,
+        height: 1024
     })[0].firstChild;
 
     // Convert the canvas to a PNG data URL

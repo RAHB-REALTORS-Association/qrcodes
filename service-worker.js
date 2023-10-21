@@ -3,8 +3,8 @@
 const CACHE_NAME = 'qr-code-generator-cache-v2';
 const urlsToCache = [
     './',
-    'static/style.css?v=202310211445',
-    'static/generator.js?v=202310211552',
+    'static/style.css?v=202310211736',
+    'static/generator.js?v=202310211730',
     'static/favicon-16x16.png',
     'static/favicon-32x32.png',
     'static/favicon-48x48.png',
