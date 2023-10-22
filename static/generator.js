@@ -130,6 +130,56 @@ document.addEventListener("DOMContentLoaded", function() {
     initializeForm(defaultSelectedType);
 });
 
+// Scroll to top button
+let timeout;
+let isHovered = false; // flag to check if the button is being hovered over
+
+const scrollToTopButton = document.getElementById("scrollToTopButton");
+
+function showButton() {
+    scrollToTopButton.style.display = 'block';
+    scrollToTopButton.classList.remove('fade-out');
+    scrollToTopButton.classList.add('fade-in');
+}
+
+function hideButton() {
+    if (!isHovered) {
+        scrollToTopButton.classList.remove('fade-in');
+        scrollToTopButton.classList.add('fade-out');
+        setTimeout(() => {
+            if (!isHovered) {
+                scrollToTopButton.style.display = 'none';
+            }
+        }, 500); // match this with your CSS transition time
+    }
+}
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 200) {
+        showButton();
+        clearTimeout(timeout);
+        timeout = setTimeout(hideButton, 2000); // 2 seconds
+    }
+});
+
+// Handle hover state
+scrollToTopButton.addEventListener('mouseenter', function() {
+    isHovered = true;
+});
+
+scrollToTopButton.addEventListener('mouseleave', function() {
+    isHovered = false;
+    hideButton();
+});
+
+// Scroll to top on click
+scrollToTopButton.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('service-worker.js').then(function(registration) {
