@@ -1,6 +1,6 @@
 # QR Code Generator
 
-<h2 align="center"><a href="https://rahb-realtors-association.github.io/qrcodes/">Generator ⚙</a></h2>
+<h2 align="center"><a href="https://qrcodes.oncornerstone.app">Generator ⚙</a></h2>
 
 This repository hosts a simple web-based QR-code generator for URLs, sending email/text messages, WiFi credentials, geolocation, vCard contacts, and vCalendar events. It is built using Bootstrap and jQuery.
 
